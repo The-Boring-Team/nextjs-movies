@@ -2,7 +2,11 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-import { getMovieData, MovieProps } from "../lib/getMovieData";
+
+type MovieProps = {
+  title: string;
+  releaseYear: number;
+}
 
 type Props = {
   movieData: MovieProps;
@@ -32,7 +36,8 @@ export default function Movie({ movieData }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const movieData = getMovieData();
+  const req = await fetch("http://localhost:3000/movie.json");
+  const movieData = await req.json();
 
   return {
     props: {
