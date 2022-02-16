@@ -5,7 +5,7 @@ import Head from "next/head";
 
 type MovieProps = {
   title: string;
-  releaseYear: number;
+  release_date: Date;
 }
 
 type Props = {
@@ -30,13 +30,13 @@ export default function Movie({ movieData }: Props) {
         height={256}
       />
       <div>{movieData.title}</div>
-      <div>{movieData.releaseYear}</div>
+      <div>{movieData.release_date}</div>
     </div>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const req = await fetch("http://localhost:3000/movie.json");
+  const req = await fetch("https://api.themoviedb.org/3/movie/550?api_key=4311457e3cc8a7c606a63fb963646ad1");
   const movieData = await req.json();
 
   return {
