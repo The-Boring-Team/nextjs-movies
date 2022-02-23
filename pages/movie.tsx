@@ -2,11 +2,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-
-type MovieProps = {
-  title: string;
-  release_date: Date;
-}
+import { MovieProps } from "../types";
 
 type Props = {
   movieData: MovieProps;
