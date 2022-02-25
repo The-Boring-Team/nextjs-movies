@@ -1,9 +1,14 @@
 html,
 body {
   padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Montserrat;
+  font-weight: 500;
+  background: #000814;
+  color: #ffc300;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 a {
@@ -12,5 +17,16 @@ a {
 }
 
 * {
+  margin: 0;
   box-sizing: border-box;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 36px;
+  font-weight: 600;
 }

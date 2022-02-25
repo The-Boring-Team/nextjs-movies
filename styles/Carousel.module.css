@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  gap: 24px;
+  max-width: calc(5 * 200px + 4 * 24px);
+  overflow: hidden;
+}
+
+.title {
+  display: inline-block;
+  padding: 8px;
+  margin-bottom: 16px;
+  background: #001d3d;
+  border-radius: 8px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 200px;
+}
+
+.item:hover {
+  cursor: pointer;
+}
+
+.item img {
+  object-fit: contain;
+}

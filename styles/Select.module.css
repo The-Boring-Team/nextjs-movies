@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ffc300;
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 5px;
+}
+
+.container:hover {
+  cursor: pointer;
+}

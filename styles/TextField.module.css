@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 288px;
+  background: #003566;
+  border-radius: 4px;
+  padding-left: 8px;
+}
+
+.container:hover {
+  cursor: pointer;
+}
