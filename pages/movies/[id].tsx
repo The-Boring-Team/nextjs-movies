@@ -1,13 +1,11 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import Head from "next/head";
 
 export type MovieProps = {
   id: number;
   title: string;
   release_date: Date;
-  image_url?: string;
 };
 
 type Props = {
@@ -25,14 +23,6 @@ export default function Movie({ movieData }: Props) {
       <Link href="/">
         <a>Homepage</a>
       </Link>
-      {movieData.image_url && (
-        <Image
-          src={movieData.image_url}
-          alt="profile picture"
-          width={256}
-          height={256}
-        />
-      )}
       <div>{movieData.title}</div>
       <div>{movieData.release_date}</div>
     </div>
@@ -52,7 +42,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: movieIds,
-    fallback: "blocking",
+    fallback: false
   };
 };
 
