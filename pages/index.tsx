@@ -1,10 +1,15 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import { MovieProps } from "./movies/[id]";
 
-const Home: NextPage = () => {
+type Props = {
+  movieIds: string[];
+};
+
+const Home: NextPage<Props> = ({ movieIds }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -18,10 +23,12 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">The first episode!</a>
         </h1>
 
-        <Link href="/movie">
-          <a>Movie page</a>
-        </Link>
-        
+        {movieIds.map((movieId: string) => (
+          <Link key={`movie-${movieId}`} href={`/movies/${movieId}`}>
+            <a>{movieId}</a>
+          </Link>
+        ))}
+
         <p className={styles.description}>
           Get started by editing{" "}
           <code className={styles.code}>pages/index.tsx</code>
@@ -75,3 +82,20 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  console.log("fetching movies...")
+  const req = await fetch(
+    "https://api.themoviedb.org/3/movie/popular?api_key=4311457e3cc8a7c606a63fb963646ad1"
+  );
+  const popularMovies = await req.json();
+  const movieIds = popularMovies.results.map((movie: MovieProps) =>
+    movie.id.toString()
+  );
+
+  return {
+    props: {
+      movieIds,
+    },
+  };
+};
