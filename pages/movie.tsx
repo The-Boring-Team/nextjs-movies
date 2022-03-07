@@ -2,11 +2,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-
-type MovieProps = {
-  title: string;
-  release_date: Date;
-}
+import { MovieProps } from "../types";
 
 type Props = {
   movieData: MovieProps;
@@ -36,7 +32,9 @@ export default function Movie({ movieData }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const req = await fetch("https://api.themoviedb.org/3/movie/550?api_key=4311457e3cc8a7c606a63fb963646ad1");
+  const req = await fetch(
+    "https://api.themoviedb.org/3/movie/550?api_key=4311457e3cc8a7c606a63fb963646ad1"
+  );
   const movieData = await req.json();
 
   return {
