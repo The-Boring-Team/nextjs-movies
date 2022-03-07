@@ -53,8 +53,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   );
   const data = await req.json();
 
-  data.image_url = `https://image.tmdb.org/t/p/original${data.poster_path}`;
-
   return {
     props: {
       movieData: data,
