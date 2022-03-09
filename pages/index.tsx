@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -83,7 +83,7 @@ const Home: NextPage<Props> = ({ movieIds }) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const req = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=4311457e3cc8a7c606a63fb963646ad1");
   const popularMovies = await req.json();
   const movieIds = popularMovies.results.map((movie: MovieProps) => movie.id.toString());

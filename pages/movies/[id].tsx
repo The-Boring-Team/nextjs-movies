@@ -35,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: movieIds,
-    fallback: false
+    fallback: "blocking"
   };
 };
 
