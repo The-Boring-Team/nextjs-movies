@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
 html,
 body {
   padding: 0;
@@ -6,6 +8,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: #000814;
   color: #FFC300;
+  font-family: 'Montserrat', sans-serif;
 }
 
 a {
