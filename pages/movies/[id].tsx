@@ -26,9 +26,6 @@ export default function Movie({ movieData }: Props) {
         <title>{movieData.title}</title>
         <link rel="icon" href="/images/profile.png" />
       </Head>
-      <Link href="/">
-        <a>Homepage</a>
-      </Link>
       <div>
         <h2>{movieData.title}</h2>
       </div>
