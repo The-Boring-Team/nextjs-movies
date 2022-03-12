@@ -1,0 +1,30 @@
+.container {
+    padding: 42px 200px;
+}
+
+.chip {
+    border: 1px solid #FFD60A;
+    border-radius: 8px;
+    padding: 8px;
+    margin-right: 16px;
+    display: inline;
+}
+
+.contentContainer {
+    display: flex;
+    gap: 24px;
+}
+
+.primaryContainer {
+    flex: 3;
+}
+
+.secondaryContainer {
+    flex: 1;
+    padding-top: 8px;
+}
+
+.posterContainer {
+    position: relative;
+    aspect-ratio: 16/9;
+}
