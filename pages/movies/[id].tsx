@@ -2,31 +2,55 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
-import { MovieProps } from "../../types";
+import { Genre, MovieProps } from "../../types";
+import styles from "../../styles/Movie.module.css";
 
 type Props = {
   movieData: MovieProps;
 };
 
 export default function Movie({ movieData }: Props) {
+  const movieGenres: string = movieData.genres
+    .map((genre: Genre) => genre.name)
+    .join(", ");
+
+  const releaseYear: number = new Date(movieData.release_date).getFullYear();
+
+  const movieDuration: string = `${Math.floor(movieData.runtime / 60)} h ${
+    movieData.runtime % 60
+  } min`;
+
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
-        <title>Iron Man</title>
+        <title>{movieData.title}</title>
         <link rel="icon" href="/images/profile.png" />
       </Head>
-      My first movie page!
       <Link href="/">
         <a>Homepage</a>
       </Link>
-      <Image
-        src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`}
-        alt="Movie image"
-        height={400}
-        width={300}
-      />
-      <div>{movieData.title}</div>
-      <div>{movieData.release_date}</div>
+      <div>
+        <h2>{movieData.title}</h2>
+      </div>
+      <div className={styles.contentContainer}>
+        <div className={styles.primaryContainer}>
+          <div className={styles.posterContainer}>
+            <Image
+              src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}
+              alt="Movie image"
+              layout="fill"
+            />
+          </div>
+          <h5>About</h5>
+          <p>{movieData.overview}</p>
+        </div>
+        <div className={styles.secondaryContainer}>
+          <p className={styles.chip}>{releaseYear}</p>
+          <p className={styles.chip}>{movieDuration}</p>
+          <h5>Genres</h5>
+          <span>{movieGenres}</span>
+        </div>
+      </div>
     </div>
   );
 }
